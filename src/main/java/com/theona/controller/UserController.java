@@ -3,14 +3,17 @@ package com.theona.controller;
 import com.theona.pojo.Result;
 import com.theona.pojo.User;
 import com.theona.service.UserService;
-import com.theona.utils.Md5Utils;
+import com.theona.utils.JwtUtil;
+import com.theona.utils.Md5Util;
 import jakarta.validation.constraints.Pattern;
-import jdk.jfr.Percentage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -47,9 +50,15 @@ public class UserController {
         }
 
         // 判断密码是否正确
-        String Md5psw = Md5Utils.encrypt(password);
+        String Md5psw = Md5Util.encrypt(password);
+
+        //登录成功
         if(Md5psw.equals(user.getPassword())){
-            return Result.success("jwt令牌");
+            Map<String,Object> claims = new HashMap<>();
+            claims.put("id",user.getId());
+            claims.put("username",user.getUsername());
+            String Token = JwtUtil.genToken(claims);
+            return Result.success(Token);
         }
 
         return Result.error("密码错误");
