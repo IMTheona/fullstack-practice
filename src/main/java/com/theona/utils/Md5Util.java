@@ -3,7 +3,7 @@ package com.theona.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Md5Utils {
+public class Md5Util {
 
     /**
      * MD5加密（返回32位小写）
