@@ -5,6 +5,7 @@
 -JDK/MySQL/IDEA已就绪
 ## 主项目-黑马程序员“大事件”
 -技术栈：Springboot、Mybatis、redis(登录优化）、JWT（登录验证）、validation
+-主要模块：用户模块、文章类型模块、文章模块
 ## 完成功能：
 -用户注册（后端）
 -用户登录（后端，Redis存储令牌）
