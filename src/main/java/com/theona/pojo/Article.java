@@ -4,6 +4,7 @@ import com.theona.anno.State;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.groups.Default;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class Article {
+    @NotNull(groups = Update.class)
     private Integer id; // 主键id
     @NotEmpty
     @Pattern(regexp = "^\\S{1,10}$")
@@ -27,4 +29,8 @@ public class Article {
     private Integer createUser; // 发布者
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
+
+    public interface Update extends Default {
+
+    }
 }

@@ -1,8 +1,7 @@
 package com.theona.mapper;
 
 import com.theona.pojo.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,4 +12,14 @@ public interface ArticleMapper {
     void add(Article article);
 
     List<Article> list(Integer userId, Integer categoryId, String state);
+
+    @Select("select * from article where id=#{id}")
+    Article findById(Integer id);
+
+    @Delete("delete from  article where id=#{id}")
+    void delete(Integer id);
+
+    @Update("update article set title=#{title},content=#{content},cover_img=#{coverImg},state=#{state},category_id=#{categoryId},update_time=#{updateTime}" +
+            "where id=#{id}")
+    void update(Article article);
 }

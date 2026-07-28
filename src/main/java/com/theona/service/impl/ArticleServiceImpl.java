@@ -10,6 +10,7 @@ import com.theona.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -49,5 +50,22 @@ public class ArticleServiceImpl implements ArticleService {
         pageBean.setItems(page.getResult());
 
         return pageBean;
+    }
+
+    @Override
+    public Article fineById(Integer id) {
+        Article article = articleMapper.findById(id);
+        return article;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        articleMapper.delete(id);
+    }
+
+    @Override
+    public void update(Article article) {
+        article.setUpdateTime(LocalDateTime.now());
+        articleMapper.update(article);
     }
 }

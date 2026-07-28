@@ -37,4 +37,22 @@ public class ArticleController {
         PageBean<Article> pageBean = articleService.list(pageNum,pageSize,categoryId,state);
         return Result.success(pageBean);
     }
+
+    @GetMapping("/detail")
+    public Result<Article> detail(Integer id){
+        Article article = articleService.fineById(id);
+        return Result.success(article);
+    }
+
+    @PutMapping
+    public Result update(@RequestBody @Validated(Article.Update.class) Article article){
+        articleService.update(article);
+        return Result.success();
+    }
+
+    @DeleteMapping
+    public Result delete(Integer id){
+        articleService.delete(id);
+        return Result.success();
+    }
 }
