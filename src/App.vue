@@ -1,9 +1,10 @@
 <script setup>
-import LoginVue from './views/Login.vue'
+// import LoginVue from './views/Login.vue'
+// import Layout from './views/Layout.vue'
 </script>
 
 <template>
-    <LoginVue />
+    <router-view></router-view>
 </template>
 
 <style scoped>

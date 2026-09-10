@@ -55,7 +55,9 @@ const loginData = ref({
     username: '',
     password: ''
 })
-//表单校验
+//登录
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const login = async () => {
     //校验表单
     let result = await userLoginService(loginData.value);
@@ -66,6 +68,8 @@ const login = async () => {
     //     //失败
     //     alert(result.message? result.message : '登录失败')
     ElMessage.success('登录成功');
+    // 跳转到首页
+    router.push('/')
 }
 </script>
 
