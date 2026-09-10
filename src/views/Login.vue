@@ -57,17 +57,14 @@ const loginData = ref({
 })
 //登录
 import { useRouter } from 'vue-router'
+import { useTokenStore } from '@/stores/token.js'
+const tokenStore = useTokenStore()
 const router = useRouter()
 const login = async () => {
     //校验表单
     let result = await userLoginService(loginData.value);
-    // if(result.code === 0){
-    //     //成功
-    //     alert('登录成功')
-    // }else{
-    //     //失败
-    //     alert(result.message? result.message : '登录失败')
     ElMessage.success('登录成功');
+    tokenStore.setToken(result.data);
     // 跳转到首页
     router.push('/')
 }
