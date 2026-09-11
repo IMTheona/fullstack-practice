@@ -90,7 +90,7 @@ const login = async () => {
                 </el-form-item>
                 <!-- 注册按钮 -->
                 <el-form-item>
-                    <el-button class="button" type="primary" auto-insert-space @click="register">
+                    <el-button class="button" type="primary" native-type="button" auto-insert-space @click="register">
                         注册
                     </el-button>
                 </el-form-item>
@@ -119,7 +119,7 @@ const login = async () => {
                 </el-form-item>
                 <!-- 登录按钮 -->
                 <el-form-item>
-                    <el-button class="button" type="primary" auto-insert-space @click="login">
+                    <el-button class="button" type="primary" native-type="button" auto-insert-space @click="login">
                         登录
                     </el-button>
                 </el-form-item>
